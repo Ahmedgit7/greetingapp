@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Greeting Page</title>
+</head>
+<body>
+    <h1>Welcome to the Greeting Page!</h1>
+    <label for="name">Enter your name:</label>
+    <input type="text" id="name" placeholder="Your Name">
+    <button onclick="displayGreeting()">Say Hello</button>
+    <div id="greeting"></div>
+
+    <script>
+        function displayGreeting() {
+            var name = document.getElementById('name').value;
+            var greetingDiv = document.getElementById('greeting');
+            greetingDiv.innerHTML = '<p>Hello, ' + name + '!</p>';
+
+            // Send the username to the server to store in the database
+            fetch('/store-username', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ name }),
+            })
+            .then(response => response.text())
+            .then(message => console.log(message))
+            .catch(error => console.error(error));
+        }
+    </script>
+</body>
+</html>
+

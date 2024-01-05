@@ -1,0 +1,14 @@
+{
+  "name": "greeting-app",
+  "version": "1.0.0",
+  "description": "A simple Node.js application for greeting users and storing usernames in a MongoDB database",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "express": "^4.17.1",
+    "mongodb": "^4.1.0"
+  }
+}
+
